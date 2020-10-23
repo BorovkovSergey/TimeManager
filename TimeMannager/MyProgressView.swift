@@ -118,12 +118,13 @@ class MyProgressView : UIView
             pv_.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant:  pv_.topAnchorConst),
             pv_.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 0.0),
             pv_.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: 0.0),
+            pv_.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -pv_.topAnchorConst),
             title_.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 0.0),
-            title_.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: pv_.topAnchorConst),
+            title_.centerYAnchor.constraint(equalTo: pv_.safeAreaLayoutGuide.centerYAnchor, constant: 0.0),
             percentLabel_.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor, constant: 0.0),
-            percentLabel_.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: pv_.topAnchorConst),
+            percentLabel_.centerYAnchor.constraint(equalTo: pv_.safeAreaLayoutGuide.centerYAnchor, constant: 0.0),
             maxValueLabel_.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: 0.0),
-            maxValueLabel_.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: pv_.topAnchorConst),
+            maxValueLabel_.centerYAnchor.constraint(equalTo: pv_.safeAreaLayoutGuide.centerYAnchor, constant: 0.0),
         ])
     }
 }

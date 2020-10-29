@@ -14,6 +14,7 @@
 		DE36FAD82541ACFF00BC7577 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE36FAD72541ACFF00BC7577 /* Assets.xcassets */; };
 		DE36FADB2541ACFF00BC7577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE36FAD92541ACFF00BC7577 /* LaunchScreen.storyboard */; };
 		DE36FAE32541DAF300BC7577 /* MyProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36FAE22541DAF300BC7577 /* MyProgressView.swift */; };
+		DED52B2525483D4800416461 /* UICollectionViewAddItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED52B2425483D4800416461 /* UICollectionViewAddItemButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		DE36FADA2541ACFF00BC7577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE36FADC2541ACFF00BC7577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE36FAE22541DAF300BC7577 /* MyProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProgressView.swift; sourceTree = "<group>"; };
+		DED52B2425483D4800416461 /* UICollectionViewAddItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewAddItemButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				DE36FAD92541ACFF00BC7577 /* LaunchScreen.storyboard */,
 				DE36FADC2541ACFF00BC7577 /* Info.plist */,
 				DE36FAE22541DAF300BC7577 /* MyProgressView.swift */,
+				DED52B2425483D4800416461 /* UICollectionViewAddItemButton.swift */,
 			);
 			path = TimeMannager;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE36FAD32541ACFE00BC7577 /* ViewController.swift in Sources */,
+				DED52B2525483D4800416461 /* UICollectionViewAddItemButton.swift in Sources */,
 				DE36FAE32541DAF300BC7577 /* MyProgressView.swift in Sources */,
 				DE36FACF2541ACFE00BC7577 /* AppDelegate.swift in Sources */,
 				DE36FAD12541ACFE00BC7577 /* SceneDelegate.swift in Sources */,

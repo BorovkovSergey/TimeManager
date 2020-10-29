@@ -32,8 +32,8 @@ class MyProgressView : UICollectionViewCell
         self.addSubview(title_)
         self.addSubview(percentLabel_)
         self.addSubview(maxValueLabel_)
-        title_.text = "_labelText"
-        percentage=50
+        title_.text = "_labelText" // todo delete me
+        percentage=50 // todo delete me
         commonInit()
     }
     
@@ -85,7 +85,7 @@ class MyProgressView : UICollectionViewCell
         get{
             return percentage_
         }
-        set {
+        set{
             percentage_=newValue
             pv_.setProgress(Float(percentage_)/100, animated: true)
             percentLabel_.text=String(percentage_) + "%"
@@ -98,11 +98,25 @@ class MyProgressView : UICollectionViewCell
         }
         set{
             reachedValue_=newValue
-            percentage=Int(Float(reachedValue_) / Float(maxValue_)*100)
+            recalculatePercentage()
+        }
+    }
+    
+    var maxValue : Int {
+        get{
+            return maxValue_
+        }
+        set{
+            maxValue_=newValue
+            recalculatePercentage()
         }
     }
     
     // private functions:
+    private func recalculatePercentage() -> Void {
+        percentage=Int(Float(reachedValue_) / Float(maxValue_)*100)
+    }
+    
     private func commonInit() -> Void {
         contentView.backgroundColor = .yellow
         NSLayoutConstraint.activate([

@@ -9,13 +9,37 @@
 /* Begin PBXBuildFile section */
 		DE36FACF2541ACFE00BC7577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36FACE2541ACFE00BC7577 /* AppDelegate.swift */; };
 		DE36FAD12541ACFE00BC7577 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36FAD02541ACFE00BC7577 /* SceneDelegate.swift */; };
-		DE36FAD32541ACFE00BC7577 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36FAD22541ACFE00BC7577 /* ViewController.swift */; };
 		DE36FAD62541ACFE00BC7577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE36FAD42541ACFE00BC7577 /* Main.storyboard */; };
 		DE36FAD82541ACFF00BC7577 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE36FAD72541ACFF00BC7577 /* Assets.xcassets */; };
 		DE36FADB2541ACFF00BC7577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE36FAD92541ACFF00BC7577 /* LaunchScreen.storyboard */; };
 		DE36FAE32541DAF300BC7577 /* MyProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36FAE22541DAF300BC7577 /* MyProgressView.swift */; };
 		DED52B2525483D4800416461 /* UICollectionViewAddItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED52B2425483D4800416461 /* UICollectionViewAddItemButton.swift */; };
+		DED52B50254B00E600416461 /* TimeManagerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED52B4F254B00E600416461 /* TimeManagerCore.swift */; };
+		DED52B5E254B044B00416461 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36FAD22541ACFE00BC7577 /* ViewController.swift */; };
+		DED52B5F254B044E00416461 /* TimeManagerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED52B4F254B00E600416461 /* TimeManagerCore.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DED52B54254B013D00416461 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE36FAC32541ACFE00BC7577 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DED52B4C254B00E600416461;
+			remoteInfo = TimeManagerCore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DED52B4B254B00E600416461 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DE36FACB2541ACFE00BC7577 /* TimeManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,10 +52,19 @@
 		DE36FADC2541ACFF00BC7577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE36FAE22541DAF300BC7577 /* MyProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProgressView.swift; sourceTree = "<group>"; };
 		DED52B2425483D4800416461 /* UICollectionViewAddItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewAddItemButton.swift; sourceTree = "<group>"; };
+		DED52B4D254B00E600416461 /* libTimeManagerCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTimeManagerCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DED52B4F254B00E600416461 /* TimeManagerCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagerCore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		DE36FAC82541ACFE00BC7577 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DED52B4A254B00E600416461 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				DE36FACD2541ACFE00BC7577 /* TimeManager */,
+				DED52B4E254B00E600416461 /* TimeManagerCore */,
 				DE36FACC2541ACFE00BC7577 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				DE36FACB2541ACFE00BC7577 /* TimeManager.app */,
+				DED52B4D254B00E600416461 /* libTimeManagerCore.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +108,14 @@
 			path = TimeManager;
 			sourceTree = "<group>";
 		};
+		DED52B4E254B00E600416461 /* TimeManagerCore */ = {
+			isa = PBXGroup;
+			children = (
+				DED52B4F254B00E600416461 /* TimeManagerCore.swift */,
+			);
+			path = TimeManagerCore;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -87,11 +130,29 @@
 			buildRules = (
 			);
 			dependencies = (
+				DED52B55254B013D00416461 /* PBXTargetDependency */,
 			);
 			name = TimeManager;
 			productName = TimeMannager;
 			productReference = DE36FACB2541ACFE00BC7577 /* TimeManager.app */;
 			productType = "com.apple.product-type.application";
+		};
+		DED52B4C254B00E600416461 /* TimeManagerCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DED52B51254B00E600416461 /* Build configuration list for PBXNativeTarget "TimeManagerCore" */;
+			buildPhases = (
+				DED52B49254B00E600416461 /* Sources */,
+				DED52B4A254B00E600416461 /* Frameworks */,
+				DED52B4B254B00E600416461 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TimeManagerCore;
+			productName = TimeManagerCore;
+			productReference = DED52B4D254B00E600416461 /* libTimeManagerCore.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -104,6 +165,9 @@
 				ORGANIZATIONNAME = "Sergey Borovkov";
 				TargetAttributes = {
 					DE36FACA2541ACFE00BC7577 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					DED52B4C254B00E600416461 = {
 						CreatedOnToolsVersion = 11.6;
 					};
 				};
@@ -122,6 +186,7 @@
 			projectRoot = "";
 			targets = (
 				DE36FACA2541ACFE00BC7577 /* TimeManager */,
+				DED52B4C254B00E600416461 /* TimeManagerCore */,
 			);
 		};
 /* End PBXProject section */
@@ -144,15 +209,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE36FAD32541ACFE00BC7577 /* ViewController.swift in Sources */,
+				DED52B5E254B044B00416461 /* ViewController.swift in Sources */,
 				DED52B2525483D4800416461 /* UICollectionViewAddItemButton.swift in Sources */,
 				DE36FAE32541DAF300BC7577 /* MyProgressView.swift in Sources */,
+				DED52B5F254B044E00416461 /* TimeManagerCore.swift in Sources */,
 				DE36FACF2541ACFE00BC7577 /* AppDelegate.swift in Sources */,
 				DE36FAD12541ACFE00BC7577 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DED52B49254B00E600416461 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DED52B50254B00E600416461 /* TimeManagerCore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DED52B55254B013D00416461 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DED52B4C254B00E600416461 /* TimeManagerCore */;
+			targetProxy = DED52B54254B013D00416461 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DE36FAD42541ACFE00BC7577 /* Main.storyboard */ = {
@@ -324,6 +406,32 @@
 			};
 			name = Release;
 		};
+		DED52B52254B00E600416461 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9GT93QMV54;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DED52B53254B00E600416461 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9GT93QMV54;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -341,6 +449,15 @@
 			buildConfigurations = (
 				DE36FAE02541ACFF00BC7577 /* Debug */,
 				DE36FAE12541ACFF00BC7577 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DED52B51254B00E600416461 /* Build configuration list for PBXNativeTarget "TimeManagerCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DED52B52254B00E600416461 /* Debug */,
+				DED52B53254B00E600416461 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -10,6 +10,20 @@ import UIKit
 //class UIProgressBar: UIVi
 class ViewController: UIViewController , UICollectionViewDataSource {
 
+    @objc let items = [ "Day", "Week", "Month" ]
+    var theSegmentedControl: UISegmentedControl!
+    
+    func theSegmentedControlInit() -> Void {
+        theSegmentedControl = UISegmentedControl(items: items)
+        theSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        theSegmentedControl.addTarget(self, action: #selector(SCWatcher), for: .valueChanged)
+    }
+    
+    @objc func SCWatcher() {
+        let idx = theSegmentedControl.selectedSegmentIndex
+        _ = (idx == UISegmentedControl.noSegment) ? "none" : items[idx]
+    }
+    
     let theCollectionView: UICollectionView = {
         let v = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -34,9 +48,13 @@ class ViewController: UIViewController , UICollectionViewDataSource {
         super.viewDidLoad()
 
         view.backgroundColor = .systemYellow
+        theSegmentedControlInit()
+        view.addSubview(theSegmentedControl)
         view.addSubview(theCollectionView)
         NSLayoutConstraint.activate([
-            theCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            theSegmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            theSegmentedControl.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            theCollectionView.topAnchor.constraint(equalTo: theSegmentedControl.safeAreaLayoutGuide.bottomAnchor),
             theCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             theCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             theCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -45,10 +63,8 @@ class ViewController: UIViewController , UICollectionViewDataSource {
         // register the two cell classes for reuse
         theCollectionView.register(MyProgressView.self, forCellWithReuseIdentifier: "MyProgressView")
         theCollectionView.register(UICollectionViewAddItemButton.self, forCellWithReuseIdentifier: "UICollectionViewAddItemButton")
-
         // set collection view dataSource
         theCollectionView.dataSource = self
-
         // use custom flow layout
         theCollectionView.collectionViewLayout = rowsLayout
     }

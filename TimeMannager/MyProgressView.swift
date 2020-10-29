@@ -9,28 +9,7 @@
 import Foundation
 import UIKit
 
-extension UIProgressView {
-    
-    @IBInspectable var barHeight : CGFloat {
-        get {
-            return transform.d * 2.0
-        }
-        set {
-            // 2.0 Refers to the default height of 2
-            let heightScale = newValue / 2.0
-            let c = center
-            transform = CGAffineTransform(scaleX: 1.0, y: heightScale)
-            center = c
-        }
-    }
-    @IBInspectable var topAnchorConst : CGFloat {
-        get {
-            return transform.d
-        }
-    }
-}
-
-class MyProgressView : UIView
+class MyProgressView : UICollectionViewCell
 {
     // initializers:
     init(_height : CGFloat, _labelText : String, _maxValue : Int ) {
@@ -42,7 +21,20 @@ class MyProgressView : UIView
         self.addSubview(percentLabel_)
         self.addSubview(maxValueLabel_)
         title_.text = _labelText
-        SetPositions()
+        commonInit()
+    }
+    
+    override init(frame: CGRect) {
+        self.pvHeight_=40
+        self.maxValue_ = 50
+        super.init(frame: frame)
+        self.addSubview(pv_)
+        self.addSubview(title_)
+        self.addSubview(percentLabel_)
+        self.addSubview(maxValueLabel_)
+        title_.text = "_labelText"
+        percentage=50
+        commonInit()
     }
     
     required init?(coder: NSCoder) {
@@ -54,7 +46,6 @@ class MyProgressView : UIView
         let pv = UIProgressView()
         pv.translatesAutoresizingMaskIntoConstraints = false
         pv.backgroundColor = UIColor.gray
-        pv.barHeight=self.pvHeight_
         return pv
     }()
     
@@ -112,19 +103,19 @@ class MyProgressView : UIView
     }
     
     // private functions:
-    private func SetPositions()
-    {
+    private func commonInit() -> Void {
+        contentView.backgroundColor = .yellow
         NSLayoutConstraint.activate([
-            pv_.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant:  pv_.topAnchorConst),
-            pv_.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 0.0),
-            pv_.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: 0.0),
-            pv_.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -pv_.topAnchorConst),
-            title_.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 0.0),
-            title_.centerYAnchor.constraint(equalTo: pv_.safeAreaLayoutGuide.centerYAnchor, constant: 0.0),
-            percentLabel_.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor, constant: 0.0),
-            percentLabel_.centerYAnchor.constraint(equalTo: pv_.safeAreaLayoutGuide.centerYAnchor, constant: 0.0),
-            maxValueLabel_.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: 0.0),
-            maxValueLabel_.centerYAnchor.constraint(equalTo: pv_.safeAreaLayoutGuide.centerYAnchor, constant: 0.0),
+            pv_.topAnchor.constraint(equalTo: contentView.topAnchor),
+            pv_.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            pv_.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            pv_.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            title_.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            title_.centerYAnchor.constraint(equalTo: pv_.safeAreaLayoutGuide.centerYAnchor),
+            percentLabel_.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            percentLabel_.centerYAnchor.constraint(equalTo: pv_.safeAreaLayoutGuide.centerYAnchor),
+            maxValueLabel_.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            maxValueLabel_.centerYAnchor.constraint(equalTo: pv_.safeAreaLayoutGuide.centerYAnchor),
         ])
     }
 }

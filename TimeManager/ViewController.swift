@@ -73,17 +73,17 @@ class ViewController: UIViewController , UICollectionViewDataSource {
         super.viewDidLayoutSubviews()
         rowsLayout.itemSize = CGSize(width: theCollectionView.frame.width, height: 40) // fixme 40
     }
-//
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // return 1 more than our data array (the extra one will be the "add item" cell
         return theData.count + 1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         // if item is less that data count, return a "Content" cell
         if indexPath.item < theData.count {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyProgressView", for: indexPath) as! MyProgressView
+            // todo add task reader
             return cell
         }
 
@@ -94,6 +94,11 @@ class ViewController: UIViewController , UICollectionViewDataSource {
 
         // set the closure
         cell.tapCallback = {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "AddTask", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
+//            newViewController.modalPresentationStyle = .fullScreen
+            self.present(newViewController, animated: true, completion: nil)
+            
             // add item button was tapped, so append an item to the data array
             self.theData.append("\(self.theData.count + 1)")
             // reload the collection view
@@ -106,8 +111,6 @@ class ViewController: UIViewController , UICollectionViewDataSource {
                 collectionView.scrollToItem(at: idx, at: .bottom, animated: true)
             })
         }
-
         return cell
-
     }
 }

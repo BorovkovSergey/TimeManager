@@ -13,6 +13,8 @@
 		DE36FAD82541ACFF00BC7577 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE36FAD72541ACFF00BC7577 /* Assets.xcassets */; };
 		DE36FADB2541ACFF00BC7577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE36FAD92541ACFF00BC7577 /* LaunchScreen.storyboard */; };
 		DE36FAE32541DAF300BC7577 /* MyProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36FAE22541DAF300BC7577 /* MyProgressView.swift */; };
+		DEB3F57325554CB40042E4C4 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3F57225554CB40042E4C4 /* AddTaskViewController.swift */; };
+		DEB3F57525554E880042E4C4 /* AddTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEB3F57425554E880042E4C4 /* AddTask.storyboard */; };
 		DED52B2525483D4800416461 /* UICollectionViewAddItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED52B2425483D4800416461 /* UICollectionViewAddItemButton.swift */; };
 		DED52B5E254B044B00416461 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36FAD22541ACFE00BC7577 /* ViewController.swift */; };
 		DED52B66254B116100416461 /* TMTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED52B65254B116100416461 /* TMTask.swift */; };
@@ -53,6 +55,8 @@
 		DE36FADA2541ACFF00BC7577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE36FADC2541ACFF00BC7577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE36FAE22541DAF300BC7577 /* MyProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProgressView.swift; sourceTree = "<group>"; };
+		DEB3F57225554CB40042E4C4 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		DEB3F57425554E880042E4C4 /* AddTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTask.storyboard; sourceTree = "<group>"; };
 		DED52B2425483D4800416461 /* UICollectionViewAddItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewAddItemButton.swift; sourceTree = "<group>"; };
 		DED52B4D254B00E600416461 /* libTimeManagerCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTimeManagerCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED52B65254B116100416461 /* TMTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMTask.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 				DE36FADC2541ACFF00BC7577 /* Info.plist */,
 				DE36FAE22541DAF300BC7577 /* MyProgressView.swift */,
 				DED52B2425483D4800416461 /* UICollectionViewAddItemButton.swift */,
+				DEB3F57225554CB40042E4C4 /* AddTaskViewController.swift */,
+				DEB3F57425554E880042E4C4 /* AddTask.storyboard */,
 			);
 			path = TimeManager;
 			sourceTree = "<group>";
@@ -201,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE36FADB2541ACFF00BC7577 /* LaunchScreen.storyboard in Resources */,
+				DEB3F57525554E880042E4C4 /* AddTask.storyboard in Resources */,
 				DE36FAD82541ACFF00BC7577 /* Assets.xcassets in Resources */,
 				DE36FAD62541ACFE00BC7577 /* Main.storyboard in Resources */,
 			);
@@ -214,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DED52B5E254B044B00416461 /* ViewController.swift in Sources */,
+				DEB3F57325554CB40042E4C4 /* AddTaskViewController.swift in Sources */,
 				DED52B2525483D4800416461 /* UICollectionViewAddItemButton.swift in Sources */,
 				DED52B6B254B18C200416461 /* TMTaskSorage.swift in Sources */,
 				DE36FAE32541DAF300BC7577 /* MyProgressView.swift in Sources */,

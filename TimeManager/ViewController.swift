@@ -24,6 +24,8 @@ class ViewController: UIViewController , UICollectionViewDataSource {
         _ = (idx == UISegmentedControl.noSegment) ? "none" : items[idx]
     }
     
+    var tasksStorage: TMTaskStorage = TMTaskStorage()
+    
     let theCollectionView: UICollectionView = {
         let v = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -97,8 +99,8 @@ class ViewController: UIViewController , UICollectionViewDataSource {
             let storyBoard: UIStoryboard = UIStoryboard(name: "AddTask", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
 //            newViewController.modalPresentationStyle = .fullScreen
+            newViewController.SetTaskStorage(self.tasksStorage) 
             self.present(newViewController, animated: true, completion: nil)
-            
             // add item button was tapped, so append an item to the data array
             self.theData.append("\(self.theData.count + 1)")
             // reload the collection view

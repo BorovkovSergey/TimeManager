@@ -10,17 +10,18 @@ import Foundation
 
 class TMTaskStorage {
     
-    var tasks : [TMTask]
+    private var tasks : [TMTask]
+    private var tasksCount : Int = 0
     init(){
         tasks = [TMTask]()
         GetTasksFromDB()
     }
     
-    func GetTasksFromDB() -> Void{
+    private func GetTasksFromDB() -> Void{
         // todo add getting tasks from db
     }
     
-    func IsTaskExists( name: String ) -> Bool {
+    private func IsTaskExists( name: String ) -> Bool {
         for task in tasks {
             if task.name == name {
                 return true
@@ -34,5 +35,7 @@ class TMTaskStorage {
             return
         }
         tasks.append(TMTask( name: name, minutes: minutes, period: period, isSplitNeeded ))
+        tasksCount += 1
     }
+    
 }

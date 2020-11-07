@@ -14,15 +14,17 @@ class AddTaskViewController : UIViewController {
         super.viewDidLoad()
         
         view.addSubview(MainLabel)
-        view.addSubview(CloseButton)
-        CloseButton.addTarget(self, action: #selector(ButtonCloseTapped(_:)), for: .touchUpInside)
+        view.addSubview(CancelButton)
+        CancelButton.addTarget(self, action: #selector(ButtonCloseTapped(_:)), for: .touchUpInside)
         NSLayoutConstraint.activate([
         MainLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-        CloseButton.topAnchor.constraint(equalTo: MainLabel.bottomAnchor),
-        CloseButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-        CloseButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+        CancelButton.topAnchor.constraint(equalTo: MainLabel.bottomAnchor),
+        CancelButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+        CancelButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
         ])
     }
+    
+    private var tasksStorage: TMTaskStorage = TMTaskStorage()
     
     private lazy var MainLabel : UILabel = {
         let v = UILabel()
@@ -32,16 +34,21 @@ class AddTaskViewController : UIViewController {
         return v
     }()
     
-    private lazy var CloseButton : UIButton = {
+    private lazy var CancelButton : UIButton = {
         let v = UIButton()
         v.translatesAutoresizingMaskIntoConstraints = false
-        v.setTitle("Close", for: .normal)
+        v.setTitle("Cancel", for: .normal)
         v.backgroundColor=UIColor.gray
         v.setTitleColor(UIColor.white, for: .normal)
         return v
     }()
 
-    @objc func ButtonCloseTapped(_ sender: Any) -> Void {
+    @objc private func ButtonCloseTapped(_ sender: Any) -> Void {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func SetTaskStorage( _ input : TMTaskStorage ) -> Void
+    {
+        self.tasksStorage = input
     }
 }

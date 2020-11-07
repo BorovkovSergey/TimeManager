@@ -106,13 +106,13 @@
 				DE36FAD02541ACFE00BC7577 /* SceneDelegate.swift */,
 				DE36FAD22541ACFE00BC7577 /* ViewController.swift */,
 				DE36FAD42541ACFE00BC7577 /* Main.storyboard */,
+				DEB3F57225554CB40042E4C4 /* AddTaskViewController.swift */,
+				DEB3F57425554E880042E4C4 /* AddTask.storyboard */,
 				DE36FAD72541ACFF00BC7577 /* Assets.xcassets */,
 				DE36FAD92541ACFF00BC7577 /* LaunchScreen.storyboard */,
 				DE36FADC2541ACFF00BC7577 /* Info.plist */,
 				DE36FAE22541DAF300BC7577 /* MyProgressView.swift */,
 				DED52B2425483D4800416461 /* UICollectionViewAddItemButton.swift */,
-				DEB3F57225554CB40042E4C4 /* AddTaskViewController.swift */,
-				DEB3F57425554E880042E4C4 /* AddTask.storyboard */,
 			);
 			path = TimeManager;
 			sourceTree = "<group>";

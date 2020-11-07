@@ -15,9 +15,9 @@ class UICollectionViewAddItemButton: UICollectionViewCell {
     let btn: UIButton = {
         let v = UIButton()
         v.translatesAutoresizingMaskIntoConstraints = false
-        v.setTitle("+", for: .normal)
-        v.setTitleColor(.systemBlue, for: .normal)
-        v.titleLabel?.font = UIFont.systemFont(ofSize: 40.0)
+        v.setTitle("Add task", for: .normal)
+        v.setTitleColor( .black, for: .normal)
+        v.titleLabel?.font = UIFont.systemFont(ofSize: 20.0)
         return v
     }()
 
@@ -35,8 +35,9 @@ class UICollectionViewAddItemButton: UICollectionViewCell {
     }
 
     func commonInit() -> Void {
-        contentView.backgroundColor = .green
+        contentView.backgroundColor = .systemGray5
         contentView.addSubview(btn)
+        btn.setTitleColor( self.traitCollection.userInterfaceStyle == .dark ? .white : .black, for: .normal)
         // constrain button to all 4 sides
         NSLayoutConstraint.activate([
             btn.topAnchor.constraint(equalTo: contentView.topAnchor),

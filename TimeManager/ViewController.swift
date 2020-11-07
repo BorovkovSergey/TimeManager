@@ -29,7 +29,6 @@ class ViewController: UIViewController , UICollectionViewDataSource {
     let theCollectionView: UICollectionView = {
         let v = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
         v.translatesAutoresizingMaskIntoConstraints = false
-        v.backgroundColor = .white
         v.contentInsetAdjustmentBehavior = .always // ???
         return v
     }()
@@ -49,7 +48,8 @@ class ViewController: UIViewController , UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemYellow
+        view.backgroundColor = self.traitCollection.userInterfaceStyle == .dark ? .systemFill : .systemGray6
+        theCollectionView.backgroundColor = self.traitCollection.userInterfaceStyle == .dark ? .systemFill : .systemGray6
         theSegmentedControlInit()
         view.addSubview(theSegmentedControl)
         view.addSubview(theCollectionView)
@@ -99,7 +99,7 @@ class ViewController: UIViewController , UICollectionViewDataSource {
             let storyBoard: UIStoryboard = UIStoryboard(name: "AddTask", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
 //            newViewController.modalPresentationStyle = .fullScreen
-            newViewController.SetTaskStorage(self.tasksStorage) 
+            newViewController.SetTaskStorage(self.tasksStorage)
             self.present(newViewController, animated: true, completion: nil)
             // add item button was tapped, so append an item to the data array
             self.theData.append("\(self.theData.count + 1)")

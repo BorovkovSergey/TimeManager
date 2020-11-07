@@ -29,9 +29,14 @@ class MyProgressView : UICollectionViewCell
         self.maxValue_ = 50
         super.init(frame: frame)
         self.addSubview(pv_)
+        pv_.backgroundColor = self.traitCollection.userInterfaceStyle == .dark ? MYColorsDarkMode.whiteGray : MYColors.whiteGray
+        pv_.tintColor = self.traitCollection.userInterfaceStyle == .dark ? MYColorsDarkMode.darkGray : MYColors.darkGray
         self.addSubview(title_)
+        title_.textColor = self.traitCollection.userInterfaceStyle == .dark ? .white : .black
         self.addSubview(percentLabel_)
+        title_.textColor = self.traitCollection.userInterfaceStyle == .dark ? .white : .black
         self.addSubview(maxValueLabel_)
+        title_.textColor = self.traitCollection.userInterfaceStyle == .dark ? .white : .black
         title_.text = "_labelText" // todo delete me
         percentage=50 // todo delete me
         commonInit()
@@ -45,21 +50,18 @@ class MyProgressView : UICollectionViewCell
     private lazy var pv_ : UIProgressView = {
         let pv = UIProgressView()
         pv.translatesAutoresizingMaskIntoConstraints = false
-        pv.backgroundColor = UIColor.gray
         return pv
     }()
     
     private lazy var title_ : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.white
         return label
     }()
     
     private lazy var percentLabel_ : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.white
         label.text = String(percentage_) + "%"
         return label
     }()
@@ -67,7 +69,6 @@ class MyProgressView : UICollectionViewCell
     private lazy var maxValueLabel_ : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.white
         var postfix = maxValue_ == 60 ? " hour" : " hours"
         label.text = String(Float(maxValue_)/60) + postfix
         return label
@@ -118,10 +119,10 @@ class MyProgressView : UICollectionViewCell
     }
     
     private func commonInit() -> Void {
-        contentView.backgroundColor = .yellow
+        contentView.backgroundColor = self.traitCollection.userInterfaceStyle == .dark ? .systemFill : .systemGray6
         NSLayoutConstraint.activate([
-            pv_.topAnchor.constraint(equalTo: contentView.topAnchor),
-            pv_.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            pv_.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 1),
+            pv_.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -1),
             pv_.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             pv_.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             title_.leftAnchor.constraint(equalTo: contentView.leftAnchor),

@@ -20,13 +20,13 @@ class MyProgressView : UICollectionViewCell
         self.addSubview(title_)
         self.addSubview(percentLabel_)
         self.addSubview(maxValueLabel_)
-        title_.text = _labelText
+        titleName_ = _labelText
+        title_.text = titleName_
         commonInit()
     }
     
     override init(frame: CGRect) {
         self.pvHeight_=40
-        self.maxValue_ = 50
         super.init(frame: frame)
         self.addSubview(pv_)
         pv_.trackTintColor = self.traitCollection.userInterfaceStyle == .dark ? MYColorsDarkMode.whiteGray : MYColors.whiteGray
@@ -37,8 +37,6 @@ class MyProgressView : UICollectionViewCell
         title_.textColor = self.traitCollection.userInterfaceStyle == .dark ? .white : .black
         self.addSubview(maxValueLabel_)
         title_.textColor = self.traitCollection.userInterfaceStyle == .dark ? .white : .black
-        title_.text = "_labelText" // todo delete me
-        percentage=50 // todo delete me
         commonInit()
     }
     
@@ -69,8 +67,7 @@ class MyProgressView : UICollectionViewCell
     private lazy var maxValueLabel_ : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        var postfix = maxValue_ == 60 ? " hour" : " hours"
-        label.text = String(Float(maxValue_)/60) + postfix
+        label.text = GetMaxValueLabelText()
         return label
     }()
     
@@ -78,6 +75,7 @@ class MyProgressView : UICollectionViewCell
     
     private var percentage_ : Int = 0
     
+    private var titleName_ : String = "Name"
     private var maxValue_ : Int = 0 // max value in minutes
     private var reachedValue_ : Int = 0 // reached value in minutes
     
@@ -103,13 +101,30 @@ class MyProgressView : UICollectionViewCell
         }
     }
     
+    func GetMaxValueLabelText() -> String
+    {
+        let postfix = maxValue_ == 60 ? " hour" : " hours"
+        return String(Float(maxValue_)/60) + postfix
+    }
+    
     var maxValue : Int {
         get{
             return maxValue_
         }
         set{
-            maxValue_=newValue
+            maxValue_ = newValue
+            maxValueLabel_.text = GetMaxValueLabelText()
             recalculatePercentage()
+        }
+    }
+    
+    var titleName : String {
+        get{
+            return titleName_
+        }
+        set{
+            titleName_ = newValue
+            title_.text = titleName_
         }
     }
     

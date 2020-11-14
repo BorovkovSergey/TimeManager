@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol AddTaskViewControllerDelegate: class {
-    func createNewTask()
+    func CreateNewTask()
 }
 
 class AddTaskViewController : UIViewController {
@@ -68,8 +68,8 @@ class AddTaskViewController : UIViewController {
     }
     
     @objc private func ButtonCreateTapped(_ sender: Any) -> Void {
-        tasksStorage.CreateNewTask(name: "Test", minutes: 100, period: .monthly, true)
-        delegate.createNewTask()
+        tasksStorage.CreateNewTask(name: "Test", minutes: 100, period: .daily, true)
+        delegate.CreateNewTask()
     }
     
     func SetTaskStorage( _ input : TMTaskStorage ) -> Void

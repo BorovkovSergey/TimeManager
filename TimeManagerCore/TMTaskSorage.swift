@@ -32,6 +32,7 @@ class TMTaskStorage {
     
     func CreateNewTask( name: String, minutes: Int, period: TaskPeriod, _ isSplitNeeded: Bool ) -> Void{
         if IsTaskExists(name: name) {
+            //todo add notification
             return
         }
         tasks_.append(TMTask( name: name, minutes: minutes, period: period, isSplitNeeded ))
@@ -42,5 +43,16 @@ class TMTaskStorage {
         get{
             return tasksCount_
         }
+    }
+    
+    public func GetTask( id: Int ) -> TMTask? {
+        if id > tasksCount_ {
+            print("Failed to get TMTask item id %d > tasks count %d", id, tasksCount_)
+            return nil
+        }
+        return tasks_[id]
+    }
+    public func GetNewestTask( ) -> TMTask {
+        return tasks_[ tasksCount_ - 1 ]
     }
 }

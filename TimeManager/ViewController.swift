@@ -102,7 +102,7 @@ class ViewController: UIViewController , UICollectionViewDataSource, AddTaskView
         cell.tapCallback = {
             let storyBoard: UIStoryboard = UIStoryboard(name: "AddTask", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
-                newViewController.modalPresentationStyle = .fullScreen
+            newViewController.modalPresentationStyle = .fullScreen
             newViewController.SetTaskStorage(self.tasksStorage)
             newViewController.delegate = self
             self.present(newViewController, animated: true, completion: nil)
@@ -122,13 +122,13 @@ class ViewController: UIViewController , UICollectionViewDataSource, AddTaskView
     {
         let storyBoard: UIStoryboard = UIStoryboard(name: "AddTask", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
-            newViewController.modalPresentationStyle = .fullScreen
+        newViewController.modalPresentationStyle = .fullScreen
         newViewController.SetTaskStorage(self.tasksStorage)
         newViewController.delegate = self
         self.present(newViewController, animated: true, completion: nil)
     }
     
-    func createNewTask() {
+    func CreateNewTask() {
         // add item button was tapped, so append an item to the data array
         self.theData.append("\(self.theData.count + 1)")
         // reload the collection view
@@ -141,5 +141,13 @@ class ViewController: UIViewController , UICollectionViewDataSource, AddTaskView
             self.theCollectionView.scrollToItem(at: idx, at: .bottom, animated: true)
         })
         dismiss(animated: true, completion: nil)
+        // todo add checking that task was created
+        if let cell = self.theCollectionView.cellForItem(at: IndexPath(row: self.tasksStorage.taskCount-1, section: 0)) as? MyProgressView
+        {
+            let newTaks = tasksStorage.GetNewestTask()
+            cell.titleName = newTaks.name
+            cell.maxValue = newTaks.maxValue
+            cell.reachedValue = newTaks.minutesReached
+         }
     }
 }

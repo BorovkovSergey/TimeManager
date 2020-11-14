@@ -66,7 +66,6 @@ class TMTask {
         minutesMonthlyReached = mmr
     }
     
-    private var minutes : Int = 0
     private var minutesDaily : Int = 0
     private var minutesWeekly : Int = 0
     private var minutesMonthly : Int = 0
@@ -89,6 +88,17 @@ class TMTask {
         set{
             // todo add checking that name is unique
             taskName=newValue
+        }
+    }
+    
+    var maxValue : Int {
+        get{
+            return minutesDaily // todo fix me
+        }
+    }
+    var minutesReached : Int {
+        get{
+            return minutesDailyReached // todo fix me
         }
     }
     

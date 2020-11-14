@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+protocol AddTaskViewControllerDelegate: class {
+    func createNewTask()
+}
+
 class AddTaskViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,13 +20,20 @@ class AddTaskViewController : UIViewController {
         view.addSubview(MainLabel)
         view.addSubview(CancelButton)
         CancelButton.addTarget(self, action: #selector(ButtonCloseTapped(_:)), for: .touchUpInside)
+        view.addSubview(CreateButton)
+        CreateButton.addTarget(self, action: #selector(ButtonCreateTapped(_:)), for: .touchUpInside)
         NSLayoutConstraint.activate([
         MainLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
         CancelButton.topAnchor.constraint(equalTo: MainLabel.bottomAnchor),
         CancelButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-        CancelButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+        CancelButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+        CreateButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+        CreateButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+        CreateButton.topAnchor.constraint(equalTo: MainLabel.bottomAnchor),
         ])
     }
+    
+    weak var delegate: AddTaskViewControllerDelegate!
     
     private var tasksStorage: TMTaskStorage = TMTaskStorage()
     
@@ -43,8 +54,22 @@ class AddTaskViewController : UIViewController {
         return v
     }()
 
+    private lazy var CreateButton : UIButton = {
+        let v = UIButton()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.setTitle("Create", for: .normal)
+        v.backgroundColor=UIColor.gray
+        v.setTitleColor(UIColor.white, for: .normal)
+        return v
+    }()
+    
     @objc private func ButtonCloseTapped(_ sender: Any) -> Void {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func ButtonCreateTapped(_ sender: Any) -> Void {
+        tasksStorage.CreateNewTask(name: "Test", minutes: 100, period: .monthly, true)
+        delegate.createNewTask()
     }
     
     func SetTaskStorage( _ input : TMTaskStorage ) -> Void

@@ -29,7 +29,7 @@ class MyProgressView : UICollectionViewCell
         self.maxValue_ = 50
         super.init(frame: frame)
         self.addSubview(pv_)
-        pv_.backgroundColor = self.traitCollection.userInterfaceStyle == .dark ? MYColorsDarkMode.whiteGray : MYColors.whiteGray
+        pv_.trackTintColor = self.traitCollection.userInterfaceStyle == .dark ? MYColorsDarkMode.whiteGray : MYColors.whiteGray
         pv_.tintColor = self.traitCollection.userInterfaceStyle == .dark ? MYColorsDarkMode.darkGray : MYColors.darkGray
         self.addSubview(title_)
         title_.textColor = self.traitCollection.userInterfaceStyle == .dark ? .white : .black

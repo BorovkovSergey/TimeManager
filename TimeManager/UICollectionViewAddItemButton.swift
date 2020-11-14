@@ -16,7 +16,6 @@ class UICollectionViewAddItemButton: UICollectionViewCell {
         let v = UIButton()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.setTitle("Add task", for: .normal)
-        v.setTitleColor( .black, for: .normal)
         v.titleLabel?.font = UIFont.systemFont(ofSize: 20.0)
         return v
     }()

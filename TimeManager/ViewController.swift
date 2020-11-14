@@ -8,7 +8,7 @@
 
 import UIKit
 //class UIProgressBar: UIVi
-class ViewController: UIViewController , UICollectionViewDataSource {
+class ViewController: UIViewController , UICollectionViewDataSource, AddTaskViewControllerDelegate {
 
     @objc let items = [ "Day", "Week", "Month" ]
     var theSegmentedControl: UISegmentedControl!
@@ -47,16 +47,20 @@ class ViewController: UIViewController , UICollectionViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = self.traitCollection.userInterfaceStyle == .dark ? .systemFill : .systemGray6
         theCollectionView.backgroundColor = self.traitCollection.userInterfaceStyle == .dark ? .systemFill : .systemGray6
         theSegmentedControlInit()
         view.addSubview(theSegmentedControl)
         view.addSubview(theCollectionView)
+        view.addSubview(createTaskButton)
+        createTaskButton.addTarget(self, action: #selector(CreateTask(_:)), for: .touchUpInside)
         NSLayoutConstraint.activate([
             theSegmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             theSegmentedControl.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            theCollectionView.topAnchor.constraint(equalTo: theSegmentedControl.safeAreaLayoutGuide.bottomAnchor),
+            createTaskButton.topAnchor.constraint(equalTo: theSegmentedControl.safeAreaLayoutGuide.bottomAnchor),
+            createTaskButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            createTaskButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            theCollectionView.topAnchor.constraint(equalTo: createTaskButton.safeAreaLayoutGuide.bottomAnchor),
             theCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             theCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             theCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -98,21 +102,44 @@ class ViewController: UIViewController , UICollectionViewDataSource {
         cell.tapCallback = {
             let storyBoard: UIStoryboard = UIStoryboard(name: "AddTask", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
-//            newViewController.modalPresentationStyle = .fullScreen
+                newViewController.modalPresentationStyle = .fullScreen
             newViewController.SetTaskStorage(self.tasksStorage)
+            newViewController.delegate = self
             self.present(newViewController, animated: true, completion: nil)
-            // add item button was tapped, so append an item to the data array
-            self.theData.append("\(self.theData.count + 1)")
-            // reload the collection view
-            collectionView.reloadData()
-            collectionView.performBatchUpdates(nil, completion: {
-                (result) in
-                // scroll to make newly added row visible (if needed)
-                let i = collectionView.numberOfItems(inSection: 0) - 1
-                let idx = IndexPath(item: i, section: 0)
-                collectionView.scrollToItem(at: idx, at: .bottom, animated: true)
-            })
         }
         return cell
+    }
+    
+    let createTaskButton : UIButton = {
+       let v = UIButton()
+       v.translatesAutoresizingMaskIntoConstraints = false
+       v.setTitle("New Task", for: .normal)
+       v.setTitleColor(UIColor.white, for: .normal)
+       return v
+    }()
+        
+    @objc func CreateTask(_ : Any )
+    {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "AddTask", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
+            newViewController.modalPresentationStyle = .fullScreen
+        newViewController.SetTaskStorage(self.tasksStorage)
+        newViewController.delegate = self
+        self.present(newViewController, animated: true, completion: nil)
+    }
+    
+    func createNewTask() {
+        // add item button was tapped, so append an item to the data array
+        self.theData.append("\(self.theData.count + 1)")
+        // reload the collection view
+        self.theCollectionView.reloadData()
+        self.theCollectionView.performBatchUpdates(nil, completion: {
+            (result) in
+            // scroll to make newly added row visible (if needed)
+            let i = self.theCollectionView.numberOfItems(inSection: 0) - 1
+            let idx = IndexPath(item: i, section: 0)
+            self.theCollectionView.scrollToItem(at: idx, at: .bottom, animated: true)
+        })
+        dismiss(animated: true, completion: nil)
     }
 }
